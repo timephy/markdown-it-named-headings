@@ -6,7 +6,8 @@ function namedHeadings(md, state) {
     state.tokens.forEach(function (token, i) {
         if (token.type === 'heading_open') {
             // var text = md.renderer.render(state.tokens[i + 1].children, md.options)
-            var text = encodeURIComponent(state.tokens[i + 1].children[0].content)
+            // var text = encodeURIComponent(state.tokens[i + 1].children[0].content)
+            var text = state.tokens[i + 1].children[0].content.replaceAll(' ', '-')
             setAttr(token, 'id', text)
         }
     })
