@@ -5,7 +5,8 @@ module.exports = function plugin(md, options) {
 function namedHeadings(md, state) {
     state.tokens.forEach(function (token, i) {
         if (token.type === 'heading_open') {
-            var text = md.renderer.render(state.tokens[i + 1].children, md.options)
+            // var text = md.renderer.render(state.tokens[i + 1].children, md.options)
+            var text = encodeURIComponent(state.tokens[i + 1].children[0].content)
             setAttr(token, 'id', text)
         }
     })
